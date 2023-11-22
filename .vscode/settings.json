@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./app/Drawing/Python/Controllers",
+        "./app/Drawing/Python/Handlers",
+        "./app/Drawing/Python"
+    ]
+}

@@ -1,0 +1,22 @@
+from abc import ABC, abstractmethod
+
+class RobotInterface(ABC):
+    @abstractmethod
+    def draw(self, event):
+        pass
+
+    @abstractmethod
+    def follow_path(self):
+        pass
+
+    @abstractmethod
+    def update_thickness(self, value):
+        pass
+
+    @abstractmethod
+    def move(self, dx, dy):
+        pass
+
+    @abstractmethod
+    def get_position(self):
+        pass
