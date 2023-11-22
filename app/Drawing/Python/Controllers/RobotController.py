@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import Canvas
 from PIL import Image, ImageTk
 from Robot import Robot
+#from Handlers.NLPHandler import NLPHandler
 
 class RobotController:
     def __init__(self, canvas, world_coordinates_boundaries):
@@ -23,3 +24,6 @@ class RobotController:
         self.line_thickness = int(value)
         # Plugging in the width so the robot can adjust for various thicknesses
         self.robot.update_thickness(value)
+
+    # def process_command(self, command):
+    #     self.nlp_handler.process_command(command)
