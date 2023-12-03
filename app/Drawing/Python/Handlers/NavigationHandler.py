@@ -24,3 +24,6 @@ class NavigationHandler:
 
     def get_robot_id(self):
         return self.drawing_handler.get_robot_id()
+    
+    def process_command(self, command):
+        self.drawing_handler.process_command(command)

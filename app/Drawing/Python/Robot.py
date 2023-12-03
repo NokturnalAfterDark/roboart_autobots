@@ -23,3 +23,6 @@ class Robot():
 
     def get_position(self):
         return self.drawing_handler.get_position()
+    
+    def process_command(self, command):
+        self.drawing_handler.process_command(command)

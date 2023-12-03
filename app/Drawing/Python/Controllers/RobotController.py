@@ -16,14 +16,19 @@ class RobotController:
         self.thickness_scale = tk.Scale(canvas.master, from_=1, to=10, orient=tk.HORIZONTAL, label="Line Thickness",
                                         command=self.update_thickness)
         self.thickness_scale.pack()
-        canvas.bind("<B1-Motion>", self.robot.draw)
-        canvas.bind("<ButtonRelease-1>", lambda event: self.robot.follow_path())
         self.line_thickness = 1
 
+        # Create a textbox (Entry widget) and a submit button
+        entry = tk.Entry(canvas.master)
+        entry.pack()
+
+        submit_button = tk.Button(canvas.master, text="Submit", command=lambda: self.robot.process_command(entry.get()))
+        submit_button.pack()
+
+        canvas.bind("<B1-Motion>", self.robot.draw)
+        canvas.bind("<ButtonRelease-1>", lambda event: self.robot.follow_path())
+        
     def update_thickness(self, value):
         self.line_thickness = int(value)
         # Plugging in the width so the robot can adjust for various thicknesses
         self.robot.update_thickness(value)
-
-    # def process_command(self, command):
-    #     self.nlp_handler.process_command(command)

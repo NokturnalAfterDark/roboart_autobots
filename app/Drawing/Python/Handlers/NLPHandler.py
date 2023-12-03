@@ -1,16 +1,32 @@
+import nltk
+nltk.download('punkt')
+class NLPHandler:
 
-# class NLPHandler:
-#     def __init__(self, robot):
-#         self.robot = robot
+    def __init__(self):
+            self.current_shape = None  # Initialize the current_shape variable
 
-#     def process_command(self, command):
-#         words = nltk.word_tokenize(command.lower())
-#         if words[0] == 'draw' and words[1] in ['circle', 'rectangle', 'triangle']:
-#             shape_command = words[1]
-#             parameters = [word for word in words[2:] if word.isdigit()]
-#             if parameters:
-#                 parameters = list(map(int, parameters))
-#                 self.robot.draw_handler.draw_shape(shape_command, *parameters)
-#             else:
-#                 print("Invalid parameters for drawing.")
-# #There needs to be a lot more done here but TBD.
+    def interpret_command(self, command):
+        interpreted_command = command.lower()
+        words = nltk.word_tokenize(interpreted_command)
+
+        if 'circle' in interpreted_command:
+            self.current_shape = 'circle'
+        elif 'rectangle' in interpreted_command:
+            self.current_shape = 'rectangle'
+        elif 'pentagon' in interpreted_command:
+             self.current_shape = 'pentagon'
+        elif 'hexagon' in interpreted_command:
+             self.current_shape = 'hexagon'
+        elif 'ellipse' in interpreted_command:
+             self.current_shape = 'ellipse'
+        elif 'triangle' in interpreted_command:
+             self.current_shape = 'triangle'
+        elif 'square' in interpreted_command:
+             self.current_shape = 'square'
+        else:
+            print("I don't understand the command.")
+
+        return interpreted_command
+
+    def get_current_shape(self):
+        return self.current_shape
