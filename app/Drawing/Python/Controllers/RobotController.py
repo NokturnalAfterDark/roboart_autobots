@@ -6,6 +6,20 @@ from Robot import Robot
 
 class RobotController:
     def __init__(self, canvas, world_coordinates_boundaries):
+        """Initialize the RobotController.
+
+        Args:
+            canvas (tk.Canvas): The tkinter Canvas where the robot will be displayed.
+            world_coordinates_boundaries: The boundaries of the world coordinates.
+
+        Returns:
+            None
+
+        This method initializes the RobotController with the specified canvas and world coordinate boundaries.
+
+        Example:
+            controller = RobotController(canvas_instance, boundaries_instance)
+        """
         self.robot = Robot(canvas, x=200, y=200)
         # Bring the robot to the front
         canvas.tag_raise(self.robot.drawing_handler.get_robot_id())
@@ -29,6 +43,19 @@ class RobotController:
         canvas.bind("<ButtonRelease-1>", lambda event: self.robot.follow_path())
         
     def update_thickness(self, value):
+        """Update the line thickness based on the specified value.
+
+        Args:
+            value (int): The new line thickness value.
+
+        Returns:
+            None
+
+        This method updates the line thickness of the robot's drawing.
+
+        Example:
+            update_thickness(2)
+        """
         self.line_thickness = int(value)
         # Plugging in the width so the robot can adjust for various thicknesses
         self.robot.update_thickness(value)

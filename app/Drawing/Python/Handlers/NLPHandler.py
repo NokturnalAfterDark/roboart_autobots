@@ -1,32 +1,40 @@
 import nltk
 nltk.download('punkt')
 class NLPHandler:
+    """Handles natural language processing for shape commands."""
 
     def __init__(self):
-            self.current_shape = None  # Initialize the current_shape variable
+        """Initialize the NLPHandler."""
+        self.shape_mapping = {
+            'circle': 'circle',
+            'rectangle': 'rectangle',
+            'pentagon': 'pentagon',
+            'hexagon': 'hexagon',
+            'ellipse': 'ellipse',
+            'triangle': 'triangle',
+            'square': 'square'
+        }
+        self.current_shape = None
 
     def interpret_command(self, command):
+        """Interpret a natural language command and set the current shape.
+
+        Args:
+            command (str): The natural language command.
+
+        Returns:
+            None
+
+        Note:
+            Updates the `current_shape` attribute.
+        """
         interpreted_command = command.lower()
         words = nltk.word_tokenize(interpreted_command)
 
-        if 'circle' in interpreted_command:
-            self.current_shape = 'circle'
-        elif 'rectangle' in interpreted_command:
-            self.current_shape = 'rectangle'
-        elif 'pentagon' in interpreted_command:
-             self.current_shape = 'pentagon'
-        elif 'hexagon' in interpreted_command:
-             self.current_shape = 'hexagon'
-        elif 'ellipse' in interpreted_command:
-             self.current_shape = 'ellipse'
-        elif 'triangle' in interpreted_command:
-             self.current_shape = 'triangle'
-        elif 'square' in interpreted_command:
-             self.current_shape = 'square'
+        for word in words:
+            if word in self.shape_mapping:
+                self.current_shape = self.shape_mapping[word]
+                break
         else:
             print("I don't understand the command.")
-
         return interpreted_command
-
-    def get_current_shape(self):
-        return self.current_shape
