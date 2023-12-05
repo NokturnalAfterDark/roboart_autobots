@@ -7,6 +7,7 @@ import Robot
 from Controllers.CanvasController import CanvasController
 from Handlers.ImageHandler import ImageHandler
 from Controllers.RobotController import RobotController
+from ChatGPTAPI import ChatGPTAPI
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -17,5 +18,7 @@ if __name__ == "__main__":
     image_handler = ImageHandler(image_path)
     canvas_controller = CanvasController(root, image_handler)
     robot_controller = RobotController(canvas_controller.canvas, world_boundaries)
+    canvas_controller.robot_controller = robot_controller
+    chat_app = ChatGPTAPI(root, robot_controller)
 
     canvas_controller.run()

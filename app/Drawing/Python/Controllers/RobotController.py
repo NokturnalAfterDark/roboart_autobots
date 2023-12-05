@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import Canvas
 from PIL import Image, ImageTk
 from Robot import Robot
-#from Handlers.NLPHandler import NLPHandler
 
 class RobotController:
     def __init__(self, canvas, world_coordinates_boundaries):
@@ -26,13 +25,21 @@ class RobotController:
 
         self.world_coordinates_boundaries = world_coordinates_boundaries
 
+        #Todo: We might be able to decouple this (scaling widget for thickness, submit button) now that the RobotController instance is being passed to the CanvasController.
+
         # Add a Scale widget for controlling line thickness
+
+        congfig_settings = tk.Label(canvas.master, text="SETTINGS: ", font=("Helvetica", 12, "bold"))
+        congfig_settings.pack()
         self.thickness_scale = tk.Scale(canvas.master, from_=1, to=10, orient=tk.HORIZONTAL, label="Line Thickness",
                                         command=self.update_thickness)
         self.thickness_scale.pack()
         self.line_thickness = 1
 
         # Create a textbox (Entry widget) and a submit button
+        chat_title_label = tk.Label(canvas.master, text="NLP Shape Prompt: ", font=("Helvetica", 12, "bold"))
+        chat_title_label.pack()
+
         entry = tk.Entry(canvas.master)
         entry.pack()
 
